@@ -1,0 +1,36 @@
+# Manual LSP Testing Instructions
+
+## 1. Start the server in one terminal:
+/usr/local/share/dotnet/dotnet /Users/mason/resources/omnisharp-csharp-lsp/sample/SampleServer/bin/Debug/net8.0/SampleServer.dll
+
+## 2. In another terminal, use netcat or telnet to send LSP messages:
+
+### Initialize request:
+Content-Length: 207
+
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"processId":null,"capabilities":{},"rootUri":"file:///Users/mason/resources/omnisharp-csharp-lsp","trace":"verbose"}}
+
+### Initialized notification:
+Content-Length: 52
+
+{"jsonrpc":"2.0","method":"initialized","params":{}}
+
+### Open a document:
+Content-Length: 358
+
+{"jsonrpc":"2.0","method":"textDocument/didOpen","params":{"textDocument":{"uri":"file:///Users/mason/resources/omnisharp-csharp-lsp/test-sample.cs","languageId":"csharp","version":1,"text":"using System;\n\nnamespace TestSample\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            Console.WriteLine(\"Hello!\");\n        }\n    }\n}"}}}
+
+### Request folding ranges:
+Content-Length: 124
+
+{"jsonrpc":"2.0","id":2,"method":"textDocument/foldingRange","params":{"textDocument":{"uri":"file:///Users/mason/resources/omnisharp-csharp-lsp/test-sample.cs"}}}
+
+### Shutdown:
+Content-Length: 58
+
+{"jsonrpc":"2.0","id":99,"method":"shutdown","params":null}
+
+### Exit:
+Content-Length: 46
+
+{"jsonrpc":"2.0","method":"exit","params":null}
