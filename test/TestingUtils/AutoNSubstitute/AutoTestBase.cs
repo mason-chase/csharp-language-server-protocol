@@ -1,5 +1,6 @@
 using DryIoc;
 using Microsoft.Extensions.DependencyInjection;
+using DryIoc.Microsoft.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NSubstitute.Internals;
 using Xunit.Abstractions;

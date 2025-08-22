@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using DryIoc;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using Newtonsoft.Json.Linq;
 using OmniSharp.Extensions.JsonRpc;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;

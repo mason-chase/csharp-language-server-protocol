@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using OmniSharp.Extensions.JsonRpc.MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 

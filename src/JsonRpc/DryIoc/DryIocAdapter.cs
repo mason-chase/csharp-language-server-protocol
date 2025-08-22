@@ -1,8 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
+using DryIoc;
 using Microsoft.Extensions.DependencyInjection;
-using OmniSharp.Extensions.JsonRpc;
 
-namespace DryIoc;
+namespace OmniSharp.Extensions.JsonRpc.DryIoc;
 
 /// <summary>Adapts DryIoc container to be used as MS.DI service provider, plus provides the helpers
 /// to simplify work with adapted container.</summary>
@@ -62,7 +62,7 @@ internal static class DryIocAdapter
 
     /// <summary>Sugar to create the DryIoc container and adapter populated with services</summary>
     public static IServiceProvider CreateServiceProvider(this IServiceCollection services) =>
-        new Container(DryIoc.Rules.MicrosoftDependencyInjectionRules).WithDependencyInjectionAdapter(services);
+        new Container(global::DryIoc.Rules.MicrosoftDependencyInjectionRules).WithDependencyInjectionAdapter(services);
 
     /// <summary>Adds services registered in <paramref name="compositionRootType"/> to container</summary>
     public static IContainer WithCompositionRoot(this IContainer container, Type compositionRootType)

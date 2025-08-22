@@ -7,6 +7,7 @@ using System.Reactive.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using OmniSharp.Extensions.LanguageServer.Protocol;
 using OmniSharp.Extensions.LanguageServer.Protocol.Client.Capabilities;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;
@@ -80,7 +81,10 @@ namespace OmniSharp.Extensions.LanguageServer.Server.Configuration
 
         Task IOnLanguageServerStarted.OnStarted(ILanguageServer server, CancellationToken cancellationToken) => GetWorkspaceConfigurationAsync(cancellationToken);
 
-        private Task GetWorkspaceConfigurationAsync(CancellationToken cancellationToken) => GetWorkspaceConfiguration().LastOrDefaultAsync().ToTask(cancellationToken, _scheduler);
+        private Task<Unit> GetWorkspaceConfigurationAsync(CancellationToken cancellationToken)
+        {
+            return GetWorkspaceConfiguration().LastOrDefaultAsync().ToTask(cancellationToken, _scheduler);
+        }
 
         private IObservable<System.Reactive.Unit> GetWorkspaceConfiguration()
         {

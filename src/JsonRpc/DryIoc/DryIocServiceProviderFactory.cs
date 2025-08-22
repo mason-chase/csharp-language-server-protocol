@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DryIoc;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace DryIoc;
+namespace OmniSharp.Extensions.JsonRpc.DryIoc;
 
 /// <summary>
 /// This DryIoc is supposed to be used with generic `IHostBuilder` like this:

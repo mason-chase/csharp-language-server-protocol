@@ -5,7 +5,7 @@ using System.Reactive.Subjects;
 using System.Reactive.Threading.Tasks;
 using System.Reflection;
 using DryIoc;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using OmniSharp.Extensions.JsonRpc;

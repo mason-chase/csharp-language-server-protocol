@@ -1,10 +1,11 @@
 using System.IO.Pipelines;
 using System.Reactive.Concurrency;
 using DryIoc;
-using MediatR;
+using Wolverine;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using OmniSharp.Extensions.JsonRpc.DryIoc;
 
 namespace OmniSharp.Extensions.JsonRpc
 {
@@ -89,61 +90,10 @@ namespace OmniSharp.Extensions.JsonRpc
             );
             container.RegisterMany<InstanceHasStarted>(nonPublicServiceTypes: true, reuse: Reuse.Singleton);
 
-            return container.AddJsonRpcMediatR();
+            return container.AddJsonRpcWolverine();
         }
 
-        internal static IContainer AddJsonRpcMediatR(this IContainer container)
-        {
-            container.RegisterMany(new[] { typeof(IMediator).GetAssembly() }, Registrator.Interfaces, Reuse.ScopedOrSingleton);
-            container.RegisterMany<RequestContext>(Reuse.Scoped);
-            // Select the desired constructor
-            container.Register<IMediator, Mediator>(made: Made.Of(() => new Mediator(Arg.Of<IServiceProvider>())));
-            container.Register(typeof(IRequestHandler<,>), typeof(RequestHandler<,>));
-            container.Register(typeof(IRequestHandler<,>), typeof(RequestHandlerDecorator<,>), setup: Setup.Decorator);
-
-            return container;
-        }
-
-        class RequestHandler<T, TR> : IRequestHandler<T, TR> where T : IRequest<TR>
-        {
-            private readonly IRequestContext _requestContext;
-
-            public RequestHandler(IRequestContext requestContext)
-            {
-                _requestContext = requestContext;
-            }
-            public Task<TR> Handle(T request, CancellationToken cancellationToken)
-            {
-                return ((IRequestHandler<T, TR>) _requestContext.Descriptor.Handler).Handle(request, cancellationToken);
-            }
-        }
-
-        class RequestHandlerDecorator<T, TR> : IRequestHandler<T, TR> where T : IRequest<TR>
-        {
-            private readonly IRequestHandler<T, TR>? _handler;
-            private readonly IRequestContext? _requestContext;
-
-            public RequestHandlerDecorator(IRequestHandler<T, TR>? handler = null, IRequestContext? requestContext = null)
-            {
-                _handler = handler;
-                _requestContext = requestContext;
-            }
-            public Task<TR> Handle(T request, CancellationToken cancellationToken)
-            {
-                if (_requestContext == null)
-                {
-                    if (_handler == null)
-                    {
-                        throw new NotImplementedException($"No request handler was registered for type {typeof(IRequestHandler<T, TR>).FullName}");
-
-                    }
-
-                    return _handler.Handle(request, cancellationToken);
-                }
-
-                return ((IRequestHandler<T, TR>) _requestContext.Descriptor.Handler).Handle(request, cancellationToken);
-            }
-        }
+        // Wolverine integration is handled in WolverineExtensions.cs
 
         internal static IContainer AddJsonRpcServerInternals(this IContainer container, JsonRpcServerOptions options)
         {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OmniSharp.Extensions.JsonRpc.DryIoc;
 
 // ReSharper disable once CheckNamespace
 

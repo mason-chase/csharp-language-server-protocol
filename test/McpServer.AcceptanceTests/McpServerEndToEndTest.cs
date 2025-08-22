@@ -6,11 +6,11 @@ using Xunit.Abstractions;
 namespace OmniSharp.McpServer.AcceptanceTests
 {
     /// <summary>
-    /// Comprehensive test that combines all MCP server functionality tests into a single test method
+    /// End-to-end test that combines all MCP server functionality tests into a single test method
     /// </summary>
-    public class McpServerComprehensiveTest : McpServerTestBase
+    public class McpServerEndToEndTest : McpServerTestBase
     {
-        public McpServerComprehensiveTest(ITestOutputHelper outputHelper) : base(outputHelper)
+        public McpServerEndToEndTest(ITestOutputHelper outputHelper) : base(outputHelper)
         {
         }
 

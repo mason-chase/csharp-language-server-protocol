@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using Minimatch;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;
 
 namespace OmniSharp.Extensions.LanguageServer.Server.Pipelines

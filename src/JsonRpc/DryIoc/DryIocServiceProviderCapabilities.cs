@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DryIoc;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace DryIoc;
+namespace OmniSharp.Extensions.JsonRpc.DryIoc;
 
 /// <summary>Wrapper of DryIoc `IsRegistered` and `Resolve` throwing the exception on unresolved type capabilities.</summary>
 internal sealed class DryIocServiceProviderCapabilities :

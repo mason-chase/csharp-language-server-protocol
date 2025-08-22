@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\McpServer\McpServer.csproj" />
     <ProjectReference Include="..\..\src\JsonRpc.Testing\JsonRpc.Testing.csproj" />
-    <ProjectReference Include="..\TestingUtils\TestingUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

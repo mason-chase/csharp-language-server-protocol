@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DryIoc;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace DryIoc;
+namespace OmniSharp.Extensions.JsonRpc.DryIoc;
 
 /// <summary>Bare-bones IServiceScope implementations</summary>
 internal sealed class DryIocServiceScope : IServiceScope

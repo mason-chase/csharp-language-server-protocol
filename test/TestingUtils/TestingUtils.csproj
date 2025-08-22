@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\src\JsonRpc\JsonRpc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DryIoc.Microsoft.DependencyInjection" />
+  </ItemGroup>
+
 </Project>

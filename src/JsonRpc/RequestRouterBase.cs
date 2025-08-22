@@ -2,7 +2,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Reactive.Disposables;
 using System.Reflection;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;

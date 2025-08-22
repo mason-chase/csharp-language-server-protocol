@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Immutable;
-using DryIoc;
+using global::DryIoc;
 using Microsoft.Extensions.Logging;
 
 // ReSharper disable once CheckNamespace

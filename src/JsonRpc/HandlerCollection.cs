@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using System.Reactive.Disposables;
 using System.Reflection;
 using DryIoc;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 
 namespace OmniSharp.Extensions.JsonRpc
 {

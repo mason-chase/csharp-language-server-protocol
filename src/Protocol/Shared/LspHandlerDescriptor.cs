@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
-using MediatR;
+using OmniSharp.Extensions.JsonRpc.MediatR;
 using OmniSharp.Extensions.JsonRpc;
 using OmniSharp.Extensions.LanguageServer.Protocol.Client.Capabilities;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;
